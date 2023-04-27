@@ -112,11 +112,11 @@ const Profile = () => {
                                             : ` flex-col flex w-full space-y-4 pt-2 md:pt0 md:space-y-10 items-center justify-center`
                                     }
                                 >
-                                    <button
+                                    {/* <button
                                         className={`bg-green-400 w-28 cursor-pointer capitalize bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2  border border-green-500 hover:border-transparent text-center rounded`}
                                     >
                                         update service
-                                    </button>
+                                    </button> */}
 
                                     <button
                                         onClick={myserviceDelete}

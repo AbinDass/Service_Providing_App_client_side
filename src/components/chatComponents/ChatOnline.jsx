@@ -45,7 +45,8 @@ const ChatOnline = ({ onlineUsers, userid, setCurrentchat, chathead, setChathead
             {online.map((o) => (
                 <div className="flex space-x-5 pt-5 cursor-pointer" onClick={() => handleClick(o)}>
                     <div className="relative">
-                        <img src={o?.profilepicture} alt="/" className="h-10 w-10 border-2 border-black mr-3 rounded-full" />
+                        {console.log(o?.profilepicture, '[][]]]]]')}
+                        <img src={o?.profilepicture.length === 0 ? "https://i1.wp.com/wilcity.com/wp-content/uploads/2020/06/115-1150152_default-profile-picture-avatar-png-green.jpg?fit=820%2C860&ssl=1": o?.profilepicture } alt="/" className="h-10 w-10 border-2 border-black mr-3 rounded-full" />
                         <div className="chatbadge absolute w-[10px] h-[10px] border-r-2 rounded-full bg-green-600 top-[2px] right-[2px]"></div>
                     </div>
                     <span className="pt-3">

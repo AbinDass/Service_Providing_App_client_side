@@ -11,6 +11,7 @@ import { getDistricts } from "../API/servicesApi";
 import LocationChoose from "../../src/components/search/LocationChoose";
 import SignOutConfirm from "./confrmations/SignOutConfirm";
 import { DistrictContext } from "../context/DistrictNow";
+import { BsFillPersonLinesFill } from "react-icons/bs";
 
 const Navbar = () => {
     const user = useSelector((state) => state.user.data.user);
@@ -30,10 +31,7 @@ const Navbar = () => {
     const [showSearchBar, setShowSearchBar] = useState(false);
     const [signoutConfirm, setSignoutConfirm] = useState(false);
 
-const {setDistrictNow, districtNow} = useContext(DistrictContext)
-
-    
-
+    const { setDistrictNow, districtNow } = useContext(DistrictContext);
 
     const dispatch = useDispatch();
 
@@ -56,8 +54,8 @@ const {setDistrictNow, districtNow} = useContext(DistrictContext)
         findDistrict(userId);
     }, []);
     const change = (e) => {
-          setDistval(e.target.value);
-          alert(distval)
+        setDistval(e.target.value);
+        alert(distval);
     };
     const Logout = () => {
         setSignoutConfirm(true);
@@ -247,30 +245,42 @@ const {setDistrictNow, districtNow} = useContext(DistrictContext)
                         <Link to="/nearbyservices">
                             <li className="hover:text-yellow-500 cursor-pointer hidden md:block">Services</li>
                         </Link>
-                        <li className="hover:text-yellow-500 cursor-pointer hidden md:block">about</li>
-                        <li className="hover:text-yellow-500 cursor-pointer hidden md:block">contact</li>
+                        {/* <li className="hover:text-yellow-500 cursor-pointer hidden md:block">about</li>
+                        <li className="hover:text-yellow-500 cursor-pointer hidden md:block">contact</li> */}
                         {!isAuth ? null : (
                             <Link to="/chat">
                                 <li className="hover:text-yellow-500 cursor-pointer hidden md:block">message</li>{" "}
                             </Link>
                         )}
+                        {isAuth ? (
+                            <Link to="/profile/myprofile">
+                                {" "}
+                                <div className="hover:text-yellow-500 cursor-pointer hidden md:block">
+                                    <h1>Profile</h1>
+                                </div>
+                            </Link>
+                        ) : null}
                         <li>
                             {isAuth ? (
-                               districtNow!==undefined ? <button
-                                    onClick={() => {
-                                        setShowmodal(true)
-                                    }}
-                                    className="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block"
-                                >
-                                    {districtNow}
-                                </button>:<button
-                                    onClick={() => {
-                                        setShowmodal(true)
-                                    }}
-                                    className="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block"
-                                >
-                                    choose location
-                                </button>
+                                districtNow !== undefined ? (
+                                    <button
+                                        onClick={() => {
+                                            setShowmodal(true);
+                                        }}
+                                        className="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block"
+                                    >
+                                        {districtNow}
+                                    </button>
+                                ) : (
+                                    <button
+                                        onClick={() => {
+                                            setShowmodal(true);
+                                        }}
+                                        className="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block"
+                                    >
+                                        choose location
+                                    </button>
+                                )
                             ) : (
                                 <button
                                     onClick={() => setShowmodal(true)}
@@ -282,8 +292,8 @@ const {setDistrictNow, districtNow} = useContext(DistrictContext)
                         </li>
                     </ul>
                 </div>
-                                    {console.log(distval,'Val')}
-                                    {console.log(districtNow,'Now')}
+                {console.log(distval, "Val")}
+                {console.log(districtNow, "Now")}
                 <div onClick={handleNav} className="block md:hidden text-green-500">
                     {!nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
                 </div>
@@ -345,7 +355,7 @@ const {setDistrictNow, districtNow} = useContext(DistrictContext)
                         <select>
                             <option> {currentLocation}</option>
 
-                            {districts.map((dist,index) => (
+                            {districts.map((dist, index) => (
                                 <option key={index}>{dist}</option>
                             ))}
                         </select>

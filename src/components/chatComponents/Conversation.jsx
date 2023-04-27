@@ -27,6 +27,7 @@ const Conversation = ({ con, currentuser, setChathead, setSeeChat }) => {
                 <span className="flex font-medium pt-2">
                     {User?.firstname} {User?.secondname}
                 </span>
+
             </div>
         </div>
     );

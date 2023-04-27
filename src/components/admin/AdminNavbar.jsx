@@ -1,7 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { userAction } from "../../redux/slice/userslice";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const AdminNavbar = () => {
+   const  dispatch = useDispatch()
+   const Navigate = useNavigate()
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        dispatch(userAction.setLogout());
+        Navigate("/admin");
+    };
     return (
         <div className="flex justify-center w-full bg-[#455A64] h-24">
             <div className="flex w-full justify-around space-x-8 items-center">
@@ -20,7 +30,7 @@ const AdminNavbar = () => {
 
                 </div>
 
-                        <button className="bg-[#00df9a] text-white h-9 w-24 rounded-md ">Log Out</button>
+                        <button className="bg-[#00df9a] text-white h-9 w-24 rounded-md " onClick={handleLogout}>Log Out</button>
             </div>
         </div>
     );

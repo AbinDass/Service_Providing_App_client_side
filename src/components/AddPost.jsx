@@ -11,6 +11,7 @@ const Addpost = ({ setLoad, load }) => {
     const [post, setPost] = useState();
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null);
+    const [loader,setLoader] = useState(false);
     const user = useSelector((state) => state.user.data.user);
     const id = user?._id;
 
@@ -24,6 +25,7 @@ const Addpost = ({ setLoad, load }) => {
         const imageurl = await upload(image);
         const response = await addPosts(imageurl, post, id);
         console.log(response);
+        setLoader(true)
         if (response) {
             setPost("");
             setImage("");
@@ -40,9 +42,14 @@ const Addpost = ({ setLoad, load }) => {
                     _id: response._id,
                 })
             );
-            console.log(response);
+            setLoader(false)
         }
     };
+    if(loader) {
+        return (
+            <h1>posting .....</h1>
+        )
+    }
 
     const handleImage = (e) => {
         setImage(e.target.files[0]);

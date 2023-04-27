@@ -73,7 +73,7 @@ const loginNow = () => {
       <div className='flex justyfy-center  gap-10 pt-20'>
             <div className="bg-white flex flex-col justify-center items-center rounded-lg shadow-lg overflow-hidden p-4">
               <div className='p-4 flex justify-center'>
-              <img src={worker.user.profilepicture} alt='profilepic' className='h-28 w-24 rounded' />
+              <img src={worker.user.profilepicture.length === 0 ? "https://i1.wp.com/wilcity.com/wp-content/uploads/2020/06/115-1150152_default-profile-picture-avatar-png-green.jpg?fit=820%2C860&ssl=1":worker.user.profilepicture} alt='profilepic' className='h-28 w-24 rounded' />
               </div>
               <div className='text-center'>
                 <h3 className="font-medium capitalize text-2xl mb-2"> {worker.user.firstname} {worker.user.secondname}</h3>

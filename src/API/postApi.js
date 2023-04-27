@@ -13,7 +13,7 @@ export const addPosts = async (imageurl, post, id) => {
     //         },
     //     }
     // );
-    alert(id)
+    
     const posts = await Axiosuser({
         method: "post",
         url: "/createpost",

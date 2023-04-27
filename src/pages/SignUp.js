@@ -57,13 +57,15 @@ const SignUp = () => {
                 <h1 className=" text-4xl font-bold text-[#00df9a]">SOCIAL-EXPO</h1>
             </div>
 
-            <div className="w-full  h-full max-w-md m-auto  rounded-lg border border-primaryBorder shadow-default py-5 px-16">
+            <div className="w-full  h-full  flex flex-col md:mt-20 justify-center items-center md:px-10 md:py-10 rounded-lg border border-primaryBorder shadow-default ">
                 <h1 className="text-2xl text-white font-medium text-center">SIGN UP</h1>
                 <h1 className=" block md:hidden w-full text-3xl font-bold text-center pt-10 text-[#00df9a] ">
                     SOCIAL-EXPO
                 </h1>
-                <div className="h-1/2 bg-white w-full px-10 py-5">
-                    <form className="" >
+                <div className="h-1/2 bg-white w-full px-10 py-5 flex flex-col justify-center items-center">
+                    <form className=" md:flex gap-5 px-10 justify-center" >
+                        <div className="w-full">
+
                         <div>
                             <label htmlFor="firstname">first name</label>
                             <input
@@ -103,6 +105,10 @@ const SignUp = () => {
                         <div className="pt-5 px-5">
                         <LocationSearch formLocation={updateLocation} />
                     </div>
+                        </div>
+
+                        <div className="w-full ">
+
                         <div>
                             <label htmlFor="phoe">phone</label>
                             <input
@@ -115,6 +121,7 @@ const SignUp = () => {
                                 placeholder="Your phone"
                             />
                         </div>
+
                         <div>
                             <label htmlFor="password">Password</label>
                             <input
@@ -138,6 +145,7 @@ const SignUp = () => {
                                 onChange={hanadleChange}
                                 placeholder="Your Password"
                             />
+                        </div>
                         </div>
                     </form>
                         <div className="flex justify-center items-center mt-6">

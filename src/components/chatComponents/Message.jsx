@@ -17,7 +17,7 @@ const Message = ({ message, own, chathead }) => {
         <div className="messagae pt-5 px-10">
             <div className={!own ? `msgttop flex space-x-5 pt-3 ` : `pt-3 space-x-5 flex justify-end `}>
                 <img
-                    src={!own ? chathead?.profilepicture : sendUser?.profilepicture}
+                    src={!own ? chathead?.profilepicture.length === 0 ? "https://i1.wp.com/wilcity.com/wp-content/uploads/2020/06/115-1150152_default-profile-picture-avatar-png-green.jpg?fit=820%2C860&ssl=1": chathead?.profilepicture : sendUser?.profilepicture.length === 0 ? "https://i1.wp.com/wilcity.com/wp-content/uploads/2020/06/115-1150152_default-profile-picture-avatar-png-green.jpg?fit=820%2C860&ssl=1" : sendUser?.profilepicture }
                     alt="/"
                     className="h-10 w-10 rounded-full"
                 />

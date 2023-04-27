@@ -18,7 +18,7 @@ const Post = ({ item  }) => {
     const [refresh, setRefresh] = useState(false);
     const [like, setLike] = useState(false);
     const [loginplease, setLoginplease] = useState(false);
-    const [likecount, setLikecount] = useState(null);
+    const [likecount, setLikecount] = useState(0);
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -29,13 +29,14 @@ const Post = ({ item  }) => {
     }, [comment, refresh]);
     const user = useSelector((state) => state.user.data.user);
     const post = useSelector((state) => state.post.postdata);
-    console.log(post,'ith posting');
+    console.log(user,'ith user');
 
     const postId = item?._id;
     const userId = user?._id;
-    const handleLike = () => {
+    const handleLike = async () => {
         setLike(!like);
-        likePost(postId, userId);
+       const res = await likePost(postId, userId);
+       console.log(res.data,'like data')
     };
 const loginPlease = () => {
     setLoginplease(true)
@@ -48,7 +49,7 @@ const loginPlease = () => {
             <div className=" flex flex-col py-10">
                 {/* ----------------------header-------------------- */}
                 <div className="flex justify-between px-10 py-10 text-black">
-                    <img className="h-10 w-10 rounded-full border-2 border-zinc-800" src={item?.userId?.profilepicture} alt="profileimg" />
+                    <img className="h-10 w-10 rounded-full border-2 border-zinc-800" src={item?.userId?.profilepicture.length === 0 ? "https://i1.wp.com/wilcity.com/wp-content/uploads/2020/06/115-1150152_default-profile-picture-avatar-png-green.jpg?fit=820%2C860&ssl=1": item?.userId?.profilepicture } alt="profileimg" />
                     <h2 className="text-xl">
                         {item?.userId.firstname} {item?.userId.secondname}
                     </h2>
@@ -66,10 +67,17 @@ const loginPlease = () => {
                 <div>
                     {isAuth ? <div className="flex space-x-10 py-5 ml-10 mt-5">
                         {!like ? (
-                            <GrFavorite size={32} className="cursor-pointer" onClick={handleLike} />
+                            <GrFavorite size={32} className="cursor-pointer" onClick={()=> {
+                                handleLike()
+                                setLikecount(likecount+1)
+                            }} />
                         ) : (
-                            <MdFavorite size={32} className="cursor-pointer" onClick={handleLike} />
+                            <MdFavorite size={32} className="cursor-pointer" onClick={() => {
+                                handleLike()
+                                setLikecount(likecount-1)
+                            }} />
                         )}
+                       <h1 className="font-medium pt-1 text-xl"> {likecount} </h1>
                         <FaRegCommentAlt size={30} onClick={() => setComment((prev) => !prev)} className="cursor-pointer" />
                     </div>:  <div className="flex space-x-10 py-5 ml-10 mt-5">      
                             <GrFavorite size={32} className="cursor-pointer" onClick={loginPlease} />
