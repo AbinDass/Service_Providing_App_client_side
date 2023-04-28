@@ -22,7 +22,7 @@ const Messenger = () => {
 
     const user = useSelector((state) => state.user.data.user);
     const userId = user?._id;
-    let socket = io("http://localhost:8000");
+    let socket = io("https://social-expo.onrender.com");
     console.log(socket);
 
     
