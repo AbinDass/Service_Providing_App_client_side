@@ -23,6 +23,7 @@ const signupForm = async (data) => {
             return false;
         }
     } catch (err) {
+        console.log(err);
         console.log(`internal server error`);
     }
 };
