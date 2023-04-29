@@ -3,13 +3,12 @@
 // eslint-disable-next-line no-unused-vars
 import { json } from "react-router-dom";
 import { Axiosuser } from "../API/axiosinstance";
-import axios from "axios";
 
 const signupForm = async (data) => {
     try {
         
         console.log(data, "it id dataaaaaaaahere 121212");
-        const response = await axios.post("/postsignup", data);
+        const response = await Axiosuser.post("/postsignup", data);
         console.log(response, " ith response");
         const result = response.data;
         let token = response.data.token;
