@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const Axiosuser = Axios.create({
-    baseURL: "https://social-expo.onrender.com",
+    baseURL: "https://social-expo.onrender.com/api",
     // baseURL: "http://localhost:8000/",
 });
 
