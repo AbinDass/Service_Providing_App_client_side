@@ -83,31 +83,7 @@ const Login = () => {
     const loginError = () =>{
         setNotfound(true)
     }
-    // const loginSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     const res = await loginForm(loginData);
-
-    //     if (res) {
-            
-    //         dispatch(
-    //             userAction.setLogin({
-    //                 data: res,
-    //                 token: res.token,
-    //                 name: res.firstname,
-    //                 id: res._id,
-    //                 imageUrl: res?.imageUrl,
-    //             })
-    //         );
-    //         navigate("/nearbyservices");
-    //         return res.user;
-    //     } else {
-    //         loginError()
-    //         return   
-    //     }
-    
-        
-    // };
+ 
     
     const googlelogin = async (datas) =>{
        alert("Please enter")

@@ -31,7 +31,7 @@ const Navbar = () => {
     const [showSearchBar, setShowSearchBar] = useState(false);
     const [signoutConfirm, setSignoutConfirm] = useState(false);
 
-    const { setDistrictNow, districtNow } = useContext(DistrictContext);
+    const { setDistrictNow, districtNow, openDistric, setOpendistric } = useContext(DistrictContext);
 
     const dispatch = useDispatch();
 
@@ -245,8 +245,8 @@ const Navbar = () => {
                         <Link to="/nearbyservices">
                             <li className="hover:text-yellow-500 cursor-pointer hidden md:block">Services</li>
                         </Link>
-                        {/* <li className="hover:text-yellow-500 cursor-pointer hidden md:block">about</li>
-                        <li className="hover:text-yellow-500 cursor-pointer hidden md:block">contact</li> */}
+                       <Link to="/about"> <li className="hover:text-yellow-500 cursor-pointer hidden md:block">about</li></Link>
+                        {/* <li className="hover:text-yellow-500 cursor-pointer hidden md:block">contact</li> */}
                         {!isAuth ? null : (
                             <Link to="/chat">
                                 <li className="hover:text-yellow-500 cursor-pointer hidden md:block">message</li>{" "}
@@ -326,13 +326,14 @@ const Navbar = () => {
                         )}
                     </div>
                 )}
-                {showmodal ? (
+                {showmodal || openDistric ? (
                     <LocationChoose
                         districts={districts}
                         onClose={setShowmodal}
                         visible={showmodal}
                         setDistval={setDistval}
                         setDistrictNow={setDistrictNow}
+                        setOpendistric={setOpendistric}
                     />
                 ) : (
                     <div> </div>
@@ -347,7 +348,7 @@ const Navbar = () => {
                         : "fixed left-[-100%]"
                 }
             >
-                <h1 className="w-full text-3xl text-[#00df9a] font-bold">SOCIAL-EXPO</h1>
+                <Link to="/"><h1 className="w-full text-3xl text-[#00df9a] font-bold">SOCIAL-EXPO</h1></Link> 
 
                 {isAuth ? (
                     <div className="flex items-center justify-center space-x-20 text-black p-4 border-2 rounded w-full ">
@@ -366,9 +367,9 @@ const Navbar = () => {
                 <SearchBar />
 
                 <ul className="">
-                    <li className="p-4 hover:text-yellow-500 cursor-pointer text-white">HOME</li>
-                    <li className="p-4 hover:text-yellow-500 cursor-pointer text-white">ABOUT</li>
-                    <li className="p-4 hover:text-yellow-500 cursor-pointer text-white">CONTACT</li>
+                    {/* <li className="p-4 hover:text-yellow-500 cursor-pointer text-white">HOME</li> */}
+                    {/* <li className="p-4 hover:text-yellow-500 cursor-pointer text-white">ABOUT</li>
+                    <li className="p-4 hover:text-yellow-500 cursor-pointer text-white">CONTACT</li> */}
 
                     <Link to="/post">
                         {" "}
@@ -378,12 +379,12 @@ const Navbar = () => {
                         <li className="p-4 hover:text-yellow-500 cursor-pointer text-white">NEAR BY SERCICE</li>
                     </Link>
 
-                    <li className={!isAuth ? "hidden" : "p-4 hover:text-yellow-500 cursor-pointer text-white"}>
+                    <Link to="/controlpanel"><li className={!isAuth ? "hidden" : "p-4 hover:text-yellow-500 cursor-pointer text-white"}>
                         CONTROL PANEL
-                    </li>
-                    <li className={!isAuth ? "hidden" : "p-4 pt-5 hover:text-yellow-500 cursor-pointer text-white"}>
+                    </li></Link>
+                    <Link to="/chat"> <li className={!isAuth ? "hidden" : "p-4 pt-5 hover:text-yellow-500 cursor-pointer text-white"}>
                         MESSAGES
-                    </li>
+                    </li></Link>
 
                     {isAuth ? (
                         // <Link to="/">

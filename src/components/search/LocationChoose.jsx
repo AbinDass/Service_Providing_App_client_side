@@ -1,6 +1,6 @@
 import React from "react";
 
-const LocationChoose = ({ visible, onClose, districts, setDistval, setDistrictNow }) => {
+const LocationChoose = ({ visible, onClose, districts, setDistval, setDistrictNow, setOpendistric }) => {
     const handleclose = (e) => {
         if (!visible) return null;
         if (e.target.id === "container") {
@@ -22,6 +22,7 @@ const LocationChoose = ({ visible, onClose, districts, setDistval, setDistrictNo
                         onClick={() => {
                             setDistval(dist);
                             onClose();
+                            setOpendistric(false)
                             setDistrictNow(dist);
                         }}
                         className="cursor-pointer py-5 space-x-5 overflow-y-scroll"

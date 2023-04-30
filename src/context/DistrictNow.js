@@ -15,9 +15,10 @@ export const DistrictProvider = ({children}) =>{
         currentLocation = "choose locattion";
     }
     const [districtNow, setDistrictNow] = useState(currentLocation)
+    const [openDistric, setOpendistric] = useState(true);
 
     return (
-        <DistrictContext.Provider value={{districtNow, setDistrictNow}}>
+        <DistrictContext.Provider value={{districtNow, setDistrictNow, openDistric, setOpendistric}}>
             {children}
         </DistrictContext.Provider>
     )
