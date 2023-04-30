@@ -9,6 +9,7 @@ import ProvidingServiceCard from "../components/ProvidingServiceCard";
 import NavBarListPage from "../components/NavBarListPage";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import AddService from "../components/AddService";
 
 const NearByServices = () => {
     const user = useSelector((state) => state.user.data.user);
