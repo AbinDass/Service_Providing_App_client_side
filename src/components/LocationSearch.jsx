@@ -42,7 +42,7 @@ const LocationSearch = ({ formLocation, err }) => {
                         onChange={textChange}
                         placeholder="Enter location name"
                         id="location"
-                        className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
+                        className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                     />
                     <p className="text-red-500 text-xs italic"> </p>
                 </div>

@@ -67,8 +67,8 @@ const Login = () => {
           }
           if (!values.password) {
             errors.password = 'please enter a valid password';
-          } else if (values.password.length < 6) {
-            errors.password = 'password must be atleast 6 characters';
+          } else if (values.password.length < 8) {
+            errors.password = 'password must be atleast 8 characters';
           }
           return errors;
         },
