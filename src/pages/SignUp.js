@@ -74,6 +74,8 @@ const SignUp = () => {
                     SOCIAL-EXPO
                 </h1>
                 <div onClick={() => setErrors({})} className="h-1/2 bg-white w-full px-10 py-5 flex flex-col justify-center items-center">
+                    <div  onClick={() => setErrors({})} >
+
                     <form className=" md:flex gap-5 px-10 justify-center" >
                         <div className="w-full">
 
@@ -166,6 +168,7 @@ const SignUp = () => {
                         </div>
                         </div>
                     </form>
+                    </div>
                         <div className="flex justify-center items-center mt-6">
                             <button onClick={otpShow} type="submit" className="bg-[#00df9a] h-10 w-60 rounded-full">
                                 SIGN UP
