@@ -39,7 +39,6 @@ const SignUp = () => {
         // e.preventDefault();
 
         console.log(formData, "dataaaaaaaaaaa 11");
-        if (!validateForm()) return;
         let signup = await signupForm(formData);
         console.log(signup);
        
@@ -57,6 +56,11 @@ const SignUp = () => {
             ...obj,
         })
     };
+
+    const otpShow = () => {
+        if (!validateForm()) return;
+        setOtpUp(true)
+    }
     return (
         <div className="flex bg-black w-full">
             <div className="text-white h-screen w-[50%] hidden md:flex md:flex-col items-center justify-center  ">
@@ -163,7 +167,7 @@ const SignUp = () => {
                         </div>
                     </form>
                         <div className="flex justify-center items-center mt-6">
-                            <button onClick={()=> setOtpUp(true)} type="submit" className="bg-[#00df9a] h-10 w-60 rounded-full">
+                            <button onClick={otpShow} type="submit" className="bg-[#00df9a] h-10 w-60 rounded-full">
                                 SIGN UP
                             </button>
                         </div>
