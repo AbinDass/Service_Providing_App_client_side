@@ -31,7 +31,6 @@ const SignUp = () => {
         return Object.keys(newErrors).length === 0;
     };
     const hanadleChange = (e) => {
-        if (!validateForm()) return;
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
@@ -40,6 +39,7 @@ const SignUp = () => {
         // e.preventDefault();
 
         console.log(formData, "dataaaaaaaaaaa 11");
+        if (!validateForm()) return;
         let signup = await signupForm(formData);
         console.log(signup);
        
