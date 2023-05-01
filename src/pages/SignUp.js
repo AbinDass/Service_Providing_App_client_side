@@ -69,7 +69,7 @@ const SignUp = () => {
                 <h1 className=" block md:hidden w-full text-3xl font-bold text-center pt-10 text-[#00df9a] ">
                     SOCIAL-EXPO
                 </h1>
-                <div className="h-1/2 bg-white w-full px-10 py-5 flex flex-col justify-center items-center">
+                <div onClick={() => setErrors({})} className="h-1/2 bg-white w-full px-10 py-5 flex flex-col justify-center items-center">
                     <form className=" md:flex gap-5 px-10 justify-center" >
                         <div className="w-full">
 
