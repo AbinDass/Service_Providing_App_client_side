@@ -82,7 +82,7 @@ const loginNow = () => {
               </div>
               <p className="text-gray-600 flex gap-10"> <BsFillTelephoneForwardFill /> {worker.user.phone}</p>
               <p className="text-gray-600 flex gap-10"><FaRupeeSign />{worker?.labour} INR /H</p>
-              <p className="text-gray-600 max-w-[250px]">{worker.description}</p>   
+              <p className="text-gray-600 max-w-[250px] md:w-full">{worker.description}</p>   
               <div className='flex'>
               {isAuth?<Link to={'/profile/'+ toId}><button  className={worker.user._id === fromId ? "hidden":"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded "}> profile</button></Link>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded "> profile</button>}
                 {isAuth?<button onClick={() => messageNow(fromId,toId)} className={worker.user._id === fromId ?"hidden":"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded  ml-10 "}> Message </button>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded  ml-10 "> Message </button>}
