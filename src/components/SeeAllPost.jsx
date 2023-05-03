@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React from "react";
 import { deletePost } from "../API/postApi";
 
 const SeeAllPost = ({ onClose, showallpost, myposts, deletedpost, setdeletepost }) => {
@@ -14,7 +14,6 @@ const SeeAllPost = ({ onClose, showallpost, myposts, deletedpost, setdeletepost 
 
     const deleteMyPost = async (postid) => {
        const res = await deletePost(postid)
-       console.log(res)
        if(res.status === 200){
         setdeletepost(!deletedpost)
        }

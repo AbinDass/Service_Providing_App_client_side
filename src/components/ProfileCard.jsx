@@ -8,7 +8,6 @@ const ProfileCard = ({profile, setShowmodal, profileid }) => {
         <div className="flex flex-wrap justify-center">
             <div className="w-full flex justify-center">
                 <div className=" ">
-                    {console.log(profile?.profilepicture,'[][][]][]]]')}
                     <img src={profile?.profilepicture === undefined || profile?.profilepicture.length === 0 ? "https://tse2.mm.bing.net/th?id=OIP.PNGQVIsPFaM41E60Zd0EdgHaHx&pid=Api&P=0" : profile?.profilepicture} alt='profilepicture' className='h-28 w-28 rounded-full mt-5'/>
                 </div>
             </div>

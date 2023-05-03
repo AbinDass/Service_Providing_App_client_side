@@ -11,6 +11,7 @@ import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Forbidden from "../pages/Forbidden";
+import ProtectUserRoutes from "../utilities/ProtectUserRoutes";
 const Userroutes = () => {
     return (
         <div>
@@ -18,14 +19,16 @@ const Userroutes = () => {
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<SignUp />}></Route>
                 <Route path="/about" element={<About />}></Route>
-
                 <Route path="/post" element={<Home />}></Route>
                 <Route path="/servicelist/:title" element={<ServiceList />}></Route>
                 <Route path="/nearbyservices" element={<NearByServices />}></Route>
-                <Route path="/subscribe" element={<Subscribtion />}></Route>
                 <Route path="/profile/:profileid" element={<Profile />}></Route>
+
+                <Route element={<ProtectUserRoutes />} >
+                <Route path="/subscribe" element={<Subscribtion />}></Route>
                 <Route path="/controlpanel" element={<ControlPanel />}></Route>
                 <Route path="/chat" element={<Messenger />}></Route>
+                </Route >
 
                 <Route path="/*" element={<Forbidden />}></Route>
                 <Route path="/login/*" element={<Forbidden />}></Route>

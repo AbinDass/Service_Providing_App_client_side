@@ -1,5 +1,4 @@
 import React from 'react'
-import Maps from 'react-map-gl'
 
 const Map = () => {
   return (

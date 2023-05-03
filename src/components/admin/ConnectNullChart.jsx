@@ -1,15 +1,6 @@
 import React from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, } from 'recharts';
 
-const data = [
-  { name: 'Page A', uv: 4000 },
-  { name: 'Page B', uv: 3000 },
-  { name: 'Page C', uv: 2000 },
-  { name: 'Page D' },
-  { name: 'Page E', uv: 1890 },
-  { name: 'Page F', uv: 2390 },
-  { name: 'Page G', uv: 3490 },
-];
 
 const ConnectNullChart = ({profitdata}) => {
   return (

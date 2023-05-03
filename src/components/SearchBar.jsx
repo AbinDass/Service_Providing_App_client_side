@@ -33,7 +33,6 @@ const SearchBar = ({ distval }) => {
 
     useEffect(() => {
         Search(search, id, distval).then((res) => {
-            console.log(res.data, distval, "--------------------");
             if (!res.data.message) {
                 setSearchResult(res.data);
             }

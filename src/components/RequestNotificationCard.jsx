@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { acceptingRequest, rejectingRequest, } from '../API/servicesApi'
 
 import { useSelector } from 'react-redux';
-import HistoryRequests from './HistoryRequests';
 
 
 const RequestNotificationCard = ({request, main, setAccept , reject, setReject}) => {
@@ -21,29 +20,9 @@ const RequestNotificationCard = ({request, main, setAccept , reject, setReject})
  
     const rejectRequest = async () => {
        const res = await rejectingRequest(request._id,userid)
-       console.log(res,'rejecting request')
        if(res) setReject(!reject)
     }
-// alert(request?.requestStatus)
-// console.log(main,123)
-// if(request?.requestStatus){
-//     return (
-//         <>
-//         <div className={ showRequestHistory ? 'hidden':'flex flex-col md:h-[600px] justify-center items-center gap-10'}>
-//             <div className='mx-auto capitalize text-xl'>
-//                    currently you dont have any requests!
-//             </div>
-//             <div className='flex space-x-10'>
-//                 <span className='capitalize text-md'>do you want see the requst History ?</span>
-//                 <span onClick={()=> setShowRequestHistory(true)} className='capitalize text-xl text-red-700 cursor-pointer'>see now</span>
-//             </div>
-//         </div>
-//             <div>
-//                 {showRequestHistory?<HistoryRequests main={main}/>:null}
-//             </div>
-//             </>
-//         )
-// } else{
+
 
     return (
      <>

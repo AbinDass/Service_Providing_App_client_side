@@ -4,32 +4,28 @@ import { useSelector } from "react-redux";
 import { editProfile } from "../API/profile";
 import { upload } from "../middleware/imageupload";
 import LocationSearch from "./LocationSearch";
+import Loader from "./loader/Loader";
 
 const Editprofile = ({ visible, onClose, setUpdateprofile, updateprofile }) => {
     const [profilePic, setProfilepic] = useState([]);
     const [userdata, setUserdata] = useState();
+    const [loader, setLoader] = useState(false);
     const user = useSelector((state) => state.user.data.user);
     const userId = user?._id;
-    console.log(userId, "ddddddiddddddddddddddd");
     const handleChange = (e) => {
         setUserdata({ ...userdata, [e.target.name]: e.target.value });
     };
 
     const submitProfile = async (e) => {
         e.preventDefault();
-        console.log(profilePic, "profilepic");
+        setLoader(true);
         const imageurl = await upload(profilePic);
-        // const formdata = new FormData(e.target);
-        console.log(imageurl, userdata, userId);
         editProfile(userdata, imageurl, userId).then((response) => {
             setUserdata({ firstname: "", lastname: "", location: "", decleration: "" });
-            console.log(response, "1");
-            console.log(userdata, "2");
 
-            // alert()
             setUpdateprofile(!updateprofile);
             onClose();
-            // alert()
+            setLoader(false);
         });
     };
 
@@ -126,6 +122,7 @@ const Editprofile = ({ visible, onClose, setUpdateprofile, updateprofile }) => {
                     </div>
                 </div>
             </form>
+            {loader?<Loader loader={loader}/>:null}
         </div>
     );
 };

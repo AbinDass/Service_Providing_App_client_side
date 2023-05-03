@@ -13,7 +13,6 @@ const AddComment = ({ postId, commentsis, refresh, setRefresh }) => {
     const userId = useSelector((state) => state.user.data.user?._id);
     const submitComment = async (e) => {
         e.preventDefault();
-        console.log(postId, "ithaanu post id");
         const res = await createComment(comment, userId, postId);
         if (res) {
             setRefresh(!refresh);

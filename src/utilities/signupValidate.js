@@ -9,7 +9,7 @@ export const FormValidate = (formData) => {
             !/\S+@\S+\.\S+/.test(formData[key]) ? newErrors[key] = 'Email is invalid' : ''
         }
         else if (key === 'phone') {
-            !/^\d{10}$/.test(formData.mobile) ? newErrors[key] = 'Mobile Number is invalid' : ''
+            !/^\d{10}$/.test(formData.phone) ? newErrors[key] = 'Mobile Number is invalid' : ''
         }
     })
     return newErrors;

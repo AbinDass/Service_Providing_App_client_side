@@ -4,7 +4,6 @@ import { GoDashboard } from "react-icons/go";
 import { CgUserList } from "react-icons/cg";
 import { GrUserWorker } from "react-icons/gr";
 import { MdMiscellaneousServices } from "react-icons/md";
-import { GrProjects } from "react-icons/gr";
 
 import { Link } from "react-router-dom";
 

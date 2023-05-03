@@ -3,7 +3,6 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import  {Auth}  from "../middleware/firebase";
 
 const Otp = ({otpUp,setOtpUp,FormSubmit}) => {
-    const [otpdata, setotpdata] = useState(null)
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
     const [input3, setInput3] = useState('');
@@ -23,13 +22,7 @@ const Otp = ({otpUp,setOtpUp,FormSubmit}) => {
     const verifyOtp = async (e) => {
         e.preventDefault();
         await Res.confirm(inputs)
-          .then((result) => {
-            // setVerify(true);
-            console.log(result, "this is the result here");
-            const User = result.user;
-            // backendCaller();
-           
-          }).then(()=>{
+        .then(()=>{
             FormSubmit()
           })
           .catch((error) => {
@@ -66,7 +59,6 @@ const Otp = ({otpUp,setOtpUp,FormSubmit}) => {
                 recaptchaVerifier
                 );
                 setRes(res);
-                console.log("otp sended successfully");
             };
 
             

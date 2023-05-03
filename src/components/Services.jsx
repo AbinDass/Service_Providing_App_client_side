@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 const Services = ({ allServices }) => {
     let dists 
     document.addEventListener('myEvent', function(event) {
-        console.log('njaaam')
        dists =  event.detail.value
-       console.log(dists,9207602017);
     });
 
     return (

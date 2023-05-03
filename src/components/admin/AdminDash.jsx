@@ -10,13 +10,11 @@ const AdminDash = () => {
   
   const userChart = async () =>{
    const users = await getuserdata()
-   console.log(users.data,'io')
    setUserdata(users.data)
   }
 
   const profitChart = async () =>{
     const profit = await getProfitData()
-    console.log(profit.data)
     setprofitdata(profit.data)
   }
 useEffect(() =>{

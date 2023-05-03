@@ -8,7 +8,6 @@ const LocationSearch = ({ formLocation, err }) => {
     const textChange = async (event) => {
         setSearchTerm(event.target.value);
         const results = await Location_Search(searchTerm);
-        console.log(results);
         setSearchResults(results);
     };
 

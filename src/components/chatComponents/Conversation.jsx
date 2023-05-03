@@ -21,7 +21,6 @@ const Conversation = ({ con, currentuser, setChathead, setSeeChat }) => {
             setChathead(User);
             setSeeChat(false);
             }}>
-                {console.log(User.profilepicture,123)}
             <div className="flex flex-grow items-center space-x-5 h-16 rounded-md cursor-pointer hover:bg-[#B2BEB5]">
                 <img src={  User?.profilepicture } alt="/profile" className="h-10 w-10 rounded-full" />
                 <span className="flex font-medium pt-2">

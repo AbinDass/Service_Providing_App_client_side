@@ -39,12 +39,9 @@ const SbscriptionCards = ({item}) => {
       const razorpay_payment_id = response.razorpay_payment_id
       const razorpay_order_id = response.razorpay_order_id
       const razorpay_signature = response.razorpay_signature
-      console.log(razorpay_payment_id, razorpay_order_id, razorpay_signature,'llllllllllloooollll')
       verifyPayment(razorpay_payment_id, razorpay_order_id, razorpay_signature, userId, item._id).then(()=> Navigate('/servicelist'))
       
-      // alert(response.razorpay_payment_id);
-      // alert(response.razorpay_order_id);
-      // alert(response.razorpay_signature);
+      
     },
     prefill: {
       name: name,
@@ -55,7 +52,6 @@ const SbscriptionCards = ({item}) => {
 
   const subscribeHere = (async ()=>{
       await takeSubscription(item._id , userId).then((response)=> {
-      console.log(response,'itu razorpay response')
       if(response.data.message){
         setVisible(!visible);
         setMessage(response.data.message)

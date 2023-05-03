@@ -5,7 +5,6 @@ import { getAllrequests, getAppointment, getAppointmentStatus } from "../API/ser
 import Navbar from "../components/Navbar";
 import RequestNotificationCard from "../components/RequestNotificationCard";
 // import Sidebar from "../components/Sidebar";
-import NavBarListPage from "../components/NavBarListPage";
 import MyAppointment from "../components/MyAppointment";
 import MyAppointmentStatus from "../components/MyAppointmentStatus";
 import HistoryRequests from "../components/HistoryRequests";
@@ -29,7 +28,7 @@ const ControlPanel = () => {
     const [update, setUpdate] = useState("");
 
     const user = useSelector((state) => state.user.data.user);
-    const userid = user._id;
+    const userid = user?._id;
 
     useEffect(() => {
         getAllrequests(userid).then((res) => {

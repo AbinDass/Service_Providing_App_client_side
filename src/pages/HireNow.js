@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Appointment } from "../API/servicesApi";
-import { useDispatch, useSelector } from "react-redux";
-import { appointmentAction } from "../redux/slice/appointmentslice";
+import {  useSelector } from "react-redux";
 // import "react-datetime/css/react-datetime.css";
 const HireNow = ({ setSeeAppointment, worker }) => {
     const [selectedDate, setSelectedDate] = useState(null);

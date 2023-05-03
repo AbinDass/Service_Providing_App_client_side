@@ -22,7 +22,6 @@ const HistoryAppoinments = ({setShowicomingAppointments, myAppointments}) => {
                         myAppointments.map((item)=>(
                             
                     <tbody>
-                        {console.log(item)}
                          <tr>
                             <td class="border px-4 py-2"><img className="rounded-full w-16 h-16" src={item?.user?.profilepicture} alt="profile" /></td>
                             <td class="border px-4 py-2">{item?.user?.firstname} {item?.requstedUserId?.secondname}</td>

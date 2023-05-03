@@ -67,8 +67,8 @@ const NavbarBeforeLogin = () => {
                        <li onClick={()=>setShowSearchBar(false)} className="hover:text-yellow-500 cursor-pointer hidden md:block"><img className="h-6 w-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaUlEQVR4nO2Wz0pCQRjFf2i6ydop9ArZO1T7FhrlK0TSH+spxNcw61GCaJMFJZn71rqolfHBufBtwjtzLxLkgYELM+ecud98cxhY4Q+hDLSAW+ANmGnY90BztiZXHAIfwHzBGAPNPAwLQM8JPwEXwDawrlEHLoGhW9cVNxo9CX0BJwvEbO5UaxPz6PLOJbQbwNtz5o1Q07I7U/vTULTFfQdKIcSWO9OYsyoCz9I4CiHeiXROPDrSuAkhjUSy7o1FXRp2z1NjKlIlg/GGNKbLNt6MMR7lUOod19mpMRDJEikW19Lox1ynYYbr9CKN49AAGYtoMRiKM3EnwFooueki02IwLfaBb3EPiETXmbdVwt9Q1J8mpp9ANda44MznisGOwqGiYd175c40MU3W18iAhq7FoofAROWtuqzObF5S4Fv2vioYZtpQX93rG6mWp3koqu5lYpvd4r+Y11zZH5ZpnJg/AvfLNl4Bww/dcoIlpDH7/gAAAABJRU5ErkJggg==" alt="/"/></li>}
                        <li className="hover:text-yellow-500 cursor-pointer hidden md:block">Home</li>              
                        <Link to="/nearbyservices"><li className="hover:text-yellow-500 cursor-pointer hidden md:block">Services</li></Link>
-                       <li className="hover:text-yellow-500 cursor-pointer hidden md:block">about</li> 
-                       <li className="hover:text-yellow-500 cursor-pointer hidden md:block">contact</li> 
+                       <Link to="/about"><li className="hover:text-yellow-500 cursor-pointer hidden md:block">about</li> </Link>
+                       {/* <li className="hover:text-yellow-500 cursor-pointer hidden md:block">contact</li>  */}
                        <li><button onClick={() => setShowmodal(true)} className="px-2 h-10 bg-yellow-500 rounded hover:bg-black hover:text-yellow-500 hidden md:block">{distval}</button></li>
                                     
                         </ul>

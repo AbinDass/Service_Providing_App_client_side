@@ -13,12 +13,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { loginForm } from "../API/userAuth";
 import { googleAuth } from "../API/userAuth";
 import UserNotFound from "../components/confrmations/UserNotFound";
+import Loader from "../components/loader/Loader";
 const Login = () => {
     const [notFound, setNotfound] = useState(false)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [loginData, setloginData] = useState({ email: "", password: "" });
-
+    const [loader, setloader] = useState(false)
 
     //form validation start 
     const formik = useFormik({
@@ -32,6 +33,7 @@ const Login = () => {
             password: values.password,
           };
           try {
+            setloader(true)
             const res = await loginForm(loginData);
             console.log(res);
             if (res) {
@@ -44,6 +46,7 @@ const Login = () => {
                         imageUrl: res?.imageUrl,
                     })
                 );
+                setloader(false)
               toast.success(res.message);
               toast.success('Login Successful');
               navigate("/nearbyservices");
@@ -199,6 +202,8 @@ const Login = () => {
                     </div>
                 </form>
             </div>
+        {loader? <Loader loader={loader}/>: null}
+
         </div>
     );
 };

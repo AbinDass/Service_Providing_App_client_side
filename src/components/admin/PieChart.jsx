@@ -1,10 +1,9 @@
 import React from 'react'
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, } from 'recharts';
 
 
 
 const PieCharts = ({profitdata}) => {
-    console.log(profitdata,'ffff')
   return (
     <div>
       <PieChart width={400} height={400}>

@@ -1,46 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addServiceByuser, getNearbyServices } from "../API/servicesApi";
 import { upload } from "../middleware/imageupload";
 import LocationSearch from "./LocationSearch";
+import Loader from "./loader/Loader";
 
 const AddService = ({ serviceExist, subscriptionTrue }) => {
     const [services, setServices] = useState([]);
     const [data, setData] = useState("");
-    // const [addserviceResponse, setAddServiceResponse] = useState();
-
+    const [loader, setLoader] = useState(false)
+    const navigate = useNavigate()
     const user = useSelector((state) => state.user.data.user);
     const userid = user?._id;
     useEffect(() => {
+        setLoader(true)
         getNearbyServices().then((res) => {
             setServices(res.data.services);
-            console.log(res.data.services, "use efffect loading all services");
+        setLoader(false)
+
         });
     }, []);
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
-        console.log(data, "dataaaaaaaaa");
     };
 
     const submitService = async (e) => {
         e.preventDefault();
-        // const formdata = new FormData(e.target);
-        // formdata.append('servicetitle',selectvalue);
-        // formdata.append('userid',userid);
+        setLoader(true)
         const imageurl = await upload(data.image);
-        console.log(imageurl, " ith image u;kllkmslkjnfg");
-        // console.log( formdata)
         data.id = userid;
         addServiceByuser(data, imageurl).then((res) => {
-            console.log(res);
-            // setAddServiceResponse(res.data);
+        setLoader(false)
+        navigate("/profile/myprofile")
         });
     };
 
     const updateLocation = (obj) => {
-        console.log(obj, " ith obj");
         setData({
             ...data,
             ...obj,
@@ -107,12 +104,6 @@ const AddService = ({ serviceExist, subscriptionTrue }) => {
 
                                 <div className="flex mt-4">
                                     <LocationSearch formLocation={updateLocation} />
-                                    {/* <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
-                                        placeholder="Add Location"
-                                        name="location"
-                                        onChange={handleChange}
-                                    /> */}
                                 </div>
                             </div>
                             <div className="md:w-full">
@@ -147,6 +138,7 @@ const AddService = ({ serviceExist, subscriptionTrue }) => {
                         </form>
                     </div>
                 </div>
+                {loader? <Loader loader={loader}/>:null}
             </div>
         );
     }

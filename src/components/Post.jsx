@@ -24,19 +24,15 @@ const Post = ({ item  }) => {
     useEffect(() => {
         Axiosuser.get(`/posts/getComments/${postId}`,{headers: { Authorization: token }}).then((response) => {
             setAllcomments(response.data.comments);
-            console.log(allComments, "dataaaaaaaaaaaaaaaaaaaa");
         });
     }, [comment, refresh]);
     const user = useSelector((state) => state.user.data.user);
-    const post = useSelector((state) => state.post.postdata);
-    console.log(user,'ith user');
 
     const postId = item?._id;
     const userId = user?._id;
     const handleLike = async () => {
         setLike(!like);
-       const res = await likePost(postId, userId);
-       console.log(res.data,'like data')
+        await likePost(postId, userId);
     };
 const loginPlease = () => {
     setLoginplease(true)
@@ -86,7 +82,6 @@ const loginPlease = () => {
 
                     <div  className={`${comment ? "block" : "hidden"}`}>
                         {isAuth ? <AddComment postId={item._id} commentsis={allComments} refresh={refresh} setRefresh={setRefresh} />: <h1 className="text-center">please login</h1>}
-                        {/* {console.log(allComments,'allcomments')} */}
                     </div>
                 </div>
             </div>

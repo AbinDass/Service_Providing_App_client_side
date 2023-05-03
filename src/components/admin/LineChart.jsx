@@ -13,7 +13,6 @@ import {
 
 
 const LineChart = ({userdata}) => {
-  console.log(userdata+"jihojhoj")
     return (
     <div>
         

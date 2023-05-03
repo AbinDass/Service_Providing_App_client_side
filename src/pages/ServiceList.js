@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { checkSubscription, deleteMyservice, getNearbyServices, getWorkersList } from "../API/servicesApi";
+import { checkSubscription, getNearbyServices, getWorkersList } from "../API/servicesApi";
 import AddService from "../components/AddService";
 import Listservices from "../components/Listservices";
 import Navbar from "../components/Navbar";
@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import DeleteService from "../components/confrmations/DeleteService";
 import { DistrictContext } from "../context/DistrictNow";
 import ProvidingServiceCard from "../components/ProvidingServiceCard";
+import Loader from "../components/loader/Loader";
 
 const ServiceList = () => {
     const [hide, setHide] = useState(true);
@@ -23,42 +24,35 @@ const ServiceList = () => {
     const [subscriptionTrue, setSubscriptionTrue] = useState(false);
     const [deleteMyService, setDeleteService] = useState(false);
     const [ShowLoginText, setShowLoginText] = useState(false);
-    // console.log(hide,servicelist[0],serviceExist,subscriptionTrue,'pottiiiii')
+    const [loader, setLoader] = useState(false);
     const { title } = useParams();
     const { districtNow } = useContext(DistrictContext);
-    // let dists
-    // document.addEventListener('myEvent', function(event) {
-    //     console.log('njaaam')
-    //    dists =  event.detail.value
-    //    console.log(dists,9207602017);
-    //   });
-
-    // console.log(title,'it is titleeeeeeeeeee')
+ 
     const isAuth = Boolean(useSelector((state) => state.user.token));
     const user = useSelector((state) => state.user.data.user);
     const id = user?._id;
     const getUserServiceAdded = async () => {
         const res = await checkServiceAdded(id);
+        
         if (!res.data.success) {
             setServiceExist(true);
         }
         setServiceExist(res.data.success);
-        // alert(res.data.success)
+       
     };
 
     const getUserSubscriptionAdded = async () => {
         const res = await checkSubscription(id);
-        console.log(res.data.success, "ith resssaaneeeeeeeettto");
         setSubscriptionTrue(res.data.success);
     };
 
     useEffect(() => {
+        setLoader(true)
         getUserSubscriptionAdded();
         getUserServiceAdded();
-
         getWorkersList(title, id, districtNow).then((res) => {
-            // console.log(res.data,'listdataaaaaaaaaaaaaaaaaaaaaaaaa')
             setServicelist(res.data);
+            setLoader(false)
         });
     }, [deleteMyService, districtNow]);
 
@@ -69,7 +63,6 @@ const ServiceList = () => {
     useEffect(() => {
         getNearbyServices(id).then((res) => {
             setServices(res.data.services);
-            console.log(res.data.services, "use efffect loading all services");
         });
     }, []);
     return (
@@ -189,6 +182,7 @@ const ServiceList = () => {
             <div className="pt-20">
                 <Footer />
             </div>
+            {loader ? <Loader loader={loader}/> : null}
         </div>
     );
 };

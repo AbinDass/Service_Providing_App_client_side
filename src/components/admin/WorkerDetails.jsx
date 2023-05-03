@@ -10,7 +10,6 @@ const WorkerDetails = ({setShowImg, workerproof}) => {
        
             <div className='flex flex-col'>
                 <img className='sm:w-[400px] ' src={workerproof.liecence} alt='/'/>
-                {console.log(workerproof,'jkghjkgjh')}
             </div>
         <div className='flex space-x-32 pt-10'>
             <button className='bg-red-400 h-10 w-24 rounded-md hover:bg-slate-300 capitalize' onClick={()=> setShowImg(false)}>cancel</button>

@@ -1,16 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
 import { getPosts } from "../API/postApi";
 import Post from "./Post";
 
-const PostComponent = ({load}) => {
+const PostComponent = ({load, setLoader}) => {
     const [post, setPost] = useState([]);
     useEffect(() => {
+        setLoader(true)
         getPosts().then((posts) => {
             setPost(posts.data);
-            console.log('object')
-            console.log(posts.data)
         });
+        setLoader(false);
     
     },[load]);
  

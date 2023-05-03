@@ -5,11 +5,10 @@ import Services from "../components/Services";
 // import Sidebar from '../components/Sidebar'
 import { CheckSubscriptionExpired, getNearbyServices } from "../API/servicesApi";
 import Footer from "../components/Footer";
-import ProvidingServiceCard from "../components/ProvidingServiceCard";
 import NavBarListPage from "../components/NavBarListPage";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import AddService from "../components/AddService";
+import Loader from "../components/loader/Loader";
 
 const NearByServices = () => {
     const user = useSelector((state) => state.user.data.user);
@@ -18,13 +17,18 @@ const NearByServices = () => {
     const subscriptionExpiry = user?.subscriptionexpirydate;
     // const [refresh, setRefresh] = useState(false);
     const [allServices, setAllservices] = useState([]);
+    const [loader, setLoader] = useState(false);
     useEffect(() => {
+        setLoader(true)
         getNearbyServices(userid).then((res) => {
-            setAllservices(res.data.services);
+            if(res){
+                setAllservices(res.data.services);
+            setLoader(false)
+            }
         });
         CheckSubscriptionExpired(userid)
     }, []);
-
+  
     return (
         <div className="">
             <div>
@@ -46,6 +50,7 @@ const NearByServices = () => {
                 </div>
                 </div>:null}
             <div className="flex py-10  w-full justify-center  items-center  h-full  bg-white">
+               
                 <div className="pt-10 md:w-full flex justify-evenly  space-y-5 px-5">
                     {allServices.length === 0 ? (
                         <div className="text-red-600 text-4xl flex justyfy-center items-center  capitalize font-medium md:h-[550px]">
@@ -59,8 +64,13 @@ const NearByServices = () => {
             <div>
                 <Footer />
             </div>
+
+        {loader? <Loader loader={loader}/>: null}
         </div>
+
     );
 };
+
+
 
 export default NearByServices;

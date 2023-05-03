@@ -24,9 +24,10 @@ const SignUp = () => {
     const [formData, setFormData] = useState(initialstate);
     const [otpup, setOtpUp] = useState(false);
     const [errors, setErrors] = useState({});
-
+    console.log(errors,2211)
     const validateForm = () => {
         const newErrors = FormValidate(formData)
+        console.log(newErrors,1122)
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -73,7 +74,7 @@ const SignUp = () => {
                 <h1 className=" block md:hidden w-full text-3xl font-bold text-center pt-10 text-[#00df9a] ">
                     SOCIAL-EXPO
                 </h1>
-                <div onClick={() => setErrors({})} className="h-1/2 bg-white w-full px-10 py-5 flex flex-col justify-center items-center">
+                <div  className="h-1/2 bg-white w-full px-10 py-5 flex flex-col justify-center items-center">
                     <div  onClick={() => setErrors({})} >
 
                     <form className=" md:flex gap-5 px-10 justify-center" >

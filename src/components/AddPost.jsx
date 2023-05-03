@@ -1,35 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { addPosts } from "../API/postApi";
-import { MdDriveFolderUpload } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { postAction } from "../redux/slice/postslice";
 import { getPosts } from "../API/postApi";
 import { upload } from "../middleware/imageupload";
-const Addpost = ({ setLoad, load }) => {
+const Addpost = ({ setLoad, load , setLoader }) => {
     const dispatch = useDispatch();
     const [post, setPost] = useState();
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null);
-    const [loader,setLoader] = useState(false);
     const user = useSelector((state) => state.user.data.user);
     const id = user?._id;
 
     useEffect(() => {
-        
-        getPosts(id);
+        getPosts(id).then(()=>{
+        })
     }, [setPost]);
 
-    console.log(image, "888888888888888");
     const submitPost = async () => {
+        setLoader(true)
         const imageurl = await upload(image);
         const response = await addPosts(imageurl, post, id);
-        console.log(response);
-        setLoader(true)
         if (response) {
             setPost("");
             setImage("");
             setLoad(!load);
+            setLoader(false)
             dispatch(
                 postAction.setPost({
                     postdata: response,
@@ -42,14 +40,12 @@ const Addpost = ({ setLoad, load }) => {
                     _id: response._id,
                 })
             );
-            setLoader(false)
+            
+            
+
         }
     };
-    if(loader) {
-        return (
-            <h1>posting .....</h1>
-        )
-    }
+   
 
     const handleImage = (e) => {
         setImage(e.target.files[0]);

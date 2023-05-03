@@ -1,9 +1,7 @@
 import React from 'react'
 import Typed from 'react-typed'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
 const HeroContent = () => {
-  const isAuth = Boolean(useSelector((state) => state.user.token));
 
   return ( 
     <div  className='bg-black text-white w-full' >

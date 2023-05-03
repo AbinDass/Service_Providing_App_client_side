@@ -5,7 +5,6 @@ const WorkerDetail = ({worker,setWorkerDetails}) => {
     <div>
       <div className='flex'>
             <div className=''>
-                {console.log(worker,"pppppfhdf")}
              {worker?.user?.firstname}  
             </div>
       </div>

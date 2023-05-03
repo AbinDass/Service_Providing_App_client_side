@@ -1,7 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 const SignOutConfirm = ({setSignoutConfirm, handleLogout}) => {
-    const navigate = useNavigate()
     const close = () =>{
         setSignoutConfirm(false)
     };

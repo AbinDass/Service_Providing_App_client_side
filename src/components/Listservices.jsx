@@ -12,7 +12,6 @@ import HireNow from '../pages/HireNow'
 import LoginRequest from './confrmations/LoginRequest'
 
 const Listservices = ({worker}) => {
-  const [requestload, setRequestload] = useState(true); 
   const [pending, setPending] = useState('');
   const [ refresh , setRefresh] = useState(false)
   const [seeappointment, setSeeAppointment] = useState(false)
@@ -23,10 +22,8 @@ const Listservices = ({worker}) => {
   const toId = worker.user._id
 
   const requestHere = () => {
-    setRequestload(true);
+   
     requestWorker(fromId, toId).then((res)=>{
-      console.log(requestload,"loaaaaaaaaaaad");
-      console.log(res.data.requests[0].requestStatus);
       setRefresh(!refresh)
     })
   };
@@ -36,7 +33,6 @@ const Listservices = ({worker}) => {
 
 useEffect(()=>{
   getUserRequest(fromId, toId).then((res)=>{
-    console.log(res.data,'kkkk')
     setPending(res.data);
   })
 },[refresh,pending])
@@ -49,7 +45,6 @@ const message = async (fromId,toId) =>{
  }
 }
 const messageNow = (fromId,toId) => {
-  console.log(fromId, toId)
     message(fromId,toId)
 };
 
@@ -57,7 +52,6 @@ const messageNow = (fromId,toId) => {
 const unfollow = () => {
   
   cancelRequest(fromId,toId).then((res) => {
-    console.log(res)
     if(res){
       setRefresh(!refresh)
     }
@@ -86,21 +80,23 @@ const loginNow = () => {
                 <TfiBag />
                 <h1> {worker.servicetitle} </h1>
               </div>
-             { console.log(pending,'pending enta') }
               <p className="text-gray-600 flex gap-10"> <BsFillTelephoneForwardFill /> {worker.user.phone}</p>
               <p className="text-gray-600 flex gap-10"><FaRupeeSign />{worker?.labour} INR /H</p>
               <p className="text-gray-600 max-w-[250px]">{worker.description}</p>   
               <div className='flex'>
-              {isAuth?<Link to={'/profile/'+ toId}><button  className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded "> profile</button></Link>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded "> profile</button>}
-                {isAuth?<button onClick={() => messageNow(fromId,toId)} className={worker._id === fromId ?"hidden":"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded  ml-10 "}> Message </button>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded  ml-10 "> Message </button>}
+              {isAuth?<Link to={'/profile/'+ toId}><button  className={worker.user._id === fromId ? "hidden":"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded "}> profile</button></Link>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded "> profile</button>}
+                {isAuth?<button onClick={() => messageNow(fromId,toId)} className={worker.user._id === fromId ?"hidden":"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded  ml-10 "}> Message </button>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded  ml-10 "> Message </button>}
                       { pending === "noRequests" ?
-                      (isAuth?<button onClick={requestHere} className={worker._id === fromId ?"hidden":"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded ml-10"}>follow</button>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded ml-10">follow</button>)
+                      (isAuth?<button onClick={requestHere} className={worker.user._id === fromId ? "hidden":"bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded ml-10"}>follow</button>:<button onClick={loginNow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded ml-10">follow</button>)
                       : pending === "pending" ? 
                       (<button onClick={unfollow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded ml-10"> requested</button>)
                       :<button onClick={unfollow} className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-24 rounded ml-10">unfollow</button>}
               </div>
             </div>
-            {isAuth?<div onClick={()=> setSeeAppointment(true)} className={worker._id === fromId ?"hidden":'bg-red-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-full text-center h-10 flex justify-center items-center shadow-md rounded-lg my-10 text-xl cursor-pointer '}>Hire Now</div>:<div onClick={loginNow} className='bg-red-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-full text-center h-10 flex justify-center items-center shadow-md rounded-lg my-10 text-xl cursor-pointer '>Hire Now</div>}
+            {isAuth?<div onClick={()=> setSeeAppointment(true)} className={worker.user._id === fromId ? "hidden":'bg-red-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-full text-center h-10 flex justify-center items-center shadow-md rounded-lg my-10 text-xl cursor-pointer '}>Hire Now</div>
+            :
+            <div onClick={loginNow} className='bg-red-300 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2  border border-blue-500 hover:border-transparent w-full text-center h-10 flex justify-center items-center shadow-md rounded-lg my-10 text-xl cursor-pointer '>Hire Now</div>}
+            
             </div>
   
           {loginShow?<LoginRequest setLoginShow={setLoginShow}/>:null}

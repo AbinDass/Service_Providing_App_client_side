@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ProfileCard from "../components/ProfileCard";
-import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
 import { getProfile } from "../API/profile";
@@ -10,13 +9,12 @@ import Editprofile from "../components/Editprofile";
 import Addpost from "../components/AddPost";
 import MyService from "../components/MyService";
 import NavBarListPage from "../components/NavBarListPage";
-import { deleteMyservice, getMyservice } from "../API/servicesApi";
+import { getMyservice } from "../API/servicesApi";
 import MyPosts from "../components/MyPosts";
 import AddService from "../components/AddService";
 import { getMypost } from "../API/postApi";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import SeeAllPost from "../components/SeeAllPost";
-import DragableChat from "../components/chatComponents/DragableChat";
 import { useParams } from "react-router-dom";
 import DeleteService from "../components/confrmations/DeleteService";
 // import AddService from "../components/AddService";
@@ -35,12 +33,10 @@ const Profile = () => {
     const [myposts, setMyposts] = useState([]);
     const [showallpost, setShowAllpost] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState(false);
-    const [deletepost, setdeletepost] = useState(false)
-
+    const [deletepost, setdeletepost] = useState(false);
     console.log(userid);
     const myService = async (userid) => {
         const res = await getMyservice(userid);
-        console.log(res.data, "myservice");
         setMyservice(res.data);
     };
 
@@ -58,7 +54,6 @@ const Profile = () => {
 
     useEffect(() => {
         getProfile(userid).then((res) => {
-            console.log(res.data, "profile serv");
             setProfile(res.data);
         });
     }, [updateprofile]);

@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-import image from "../assets/man-cleaning-landpage.webp";
 import { createConversation, searchUsers } from "../API/chatapi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +12,6 @@ const ChatComponent = () => {
     const [searchUser, setSearchUser] = useState([]);
     const searchFriend = async (e) => {
         const res = await searchUsers(e.target.value);
-        console.log(res.data);
         setSearchUser(res.data);
     };
 

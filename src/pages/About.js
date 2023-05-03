@@ -1,11 +1,15 @@
 import React from "react";
+import Navbar from "../components/Navbar";
+import AboutHeroContent from "../components/AboutHeroContent";
+import Footer from "../components/Footer";
 // import Map from "../components/Map";
 
 const About = () => {
     return (
         <div>
-            iam here
-            {/* <Map /> */}
+           <Navbar />
+            <AboutHeroContent />
+            <Footer />
         </div>
     );
 };

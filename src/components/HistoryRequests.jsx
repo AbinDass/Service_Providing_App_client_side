@@ -4,7 +4,6 @@ const HistoryRequests = ({ main ,setShowRequestHistory}) => {
     
     return (
         <div className="h-full flex flex-col justify-center items-center">
-            {console.log(main,'main')}
 
             <div className="m-auto inset-0 pt-20">
                 <table class="table-auto">

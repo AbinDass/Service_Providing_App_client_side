@@ -5,11 +5,7 @@ import { userBlock } from "../../API/dashboardcontrols.js";
 import { userUnblock } from "../../API/dashboardcontrols.js";
 
 const Userlist = ({ list, refresh, setRefresh }) => {
-    //  const [id, setId] = useState(null);
-    //  useEffect( () => {
-    //      const res =  userList();
-    //      console.log(res,'ansar')
-    //  }, [refresh]);
+    
 
     return (
         <div className="md:w-full w-[460px]">
