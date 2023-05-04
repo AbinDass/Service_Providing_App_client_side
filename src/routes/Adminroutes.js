@@ -7,6 +7,7 @@ import Services from "../pages/admin/Services";
 import Subscribe from "../pages/admin/Subscribe";
 import AdminLogin from "../pages/admin/AdminLogin";
 import ProtectAdminRoutes from "../utilities/ProtectAdminRoutes";
+import Forbidden from "../pages/Forbidden";
 
 const Adminroutes = () => {
     return (
@@ -20,6 +21,7 @@ const Adminroutes = () => {
                 <Route path="/service" element={<Services />}></Route>
                 <Route path="/subscribe" element={<Subscribe />}></Route>
                 </Route>
+                <Route path="/admin/*" element={<Forbidden />}></Route>
             </Routes>
         </div>
     );
