@@ -17,7 +17,6 @@ function AdminLogin() {
         e.preventDefault();
 
         let admin = await adminLogin(loginData);
-        alert(admin);
         if (admin) {
             navigate("/admin/dashboard");
         } else {
