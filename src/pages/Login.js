@@ -89,12 +89,9 @@ const Login = () => {
  
     
     const googlelogin = async (datas) =>{
-       alert("Please enter")
-       console.log(datas)
         const response = await googleAuth(datas);
         if (response) {
             const userData = response.data;
-            console.log(userData)
             localStorage.setItem("token", userData.token);
             dispatch(
                 userAction.setLogin({
