@@ -14,13 +14,12 @@ const Adminroutes = () => {
         <div>
             <Routes>
                 <Route path="/" element={<AdminLogin />}></Route>
-                <Route element={<ProtectAdminRoutes />} >
                 <Route path="/dashboard" element={<Dashboard />}></Route>
                 <Route path="/users" element={<Users />}></Route>
                 <Route path="/worker" element={<Workers />}></Route>
                 <Route path="/service" element={<Services />}></Route>
                 <Route path="/subscribe" element={<Subscribe />}></Route>
-                </Route>
+              
                 <Route path="/admin/*" element={<Forbidden />}></Route>
             </Routes>
         </div>

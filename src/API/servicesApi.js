@@ -9,9 +9,8 @@ export const getNearbyServices = async (userid) => {
 
 export const serviceDelete = (serviceid) => {
     console.log(serviceid);
-    const deleteServ = Axiosadmin.delete(`/deleteservices/${serviceid}`,{ headers: { Authorization: token } });
+    const deleteServ = Axiosadmin.delete(`/deleteservices/${serviceid}`, { headers: { Authorization: token } });
     console.log(deleteServ);
-    console.log("nooooooooooooooooo");
     return deleteServ;
 };
 
@@ -24,14 +23,14 @@ export const addSubscription = (Data, background) => {
             Data,
             background,
         },
-        headers: { Authorization: token } 
+        headers: { Authorization: token },
     });
     console.log(Data, "last");
     return addsub;
 };
 
 export const getSubscriptions = async () => {
-    const res = await Axiosadmin.get("/subscriptions",{ headers: { Authorization: token } });
+    const res = await Axiosadmin.get("/subscriptions", { headers: { Authorization: token } });
     console.log(res, "get all subscriptions");
     return res;
 };
@@ -51,13 +50,15 @@ export const addServiceByuser = async (formdata, imageurl) => {
             formdata,
             imageurl,
         },
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
     return res;
 };
 
-export const getWorkersList = async (title,userid,districtNow) => {
-    const res = await Axiosuser.get(`/workerlist?title=${title}&userid=${userid}&district=${districtNow}`, { headers: { Authorization: token } });
+export const getWorkersList = async (title, userid, districtNow) => {
+    const res = await Axiosuser.get(`/workerlist?title=${title}&userid=${userid}&district=${districtNow}`, {
+        headers: { Authorization: token },
+    });
     return res;
 };
 
@@ -70,7 +71,7 @@ export const takeSubscription = async (subId, userId) => {
             subId,
             userId,
         },
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
 
     return sub;
@@ -89,7 +90,7 @@ export const verifyPayment = async (razorpay_payment_id, razorpay_order_id, razo
             userId,
             subId,
         },
-        headers: { Authorization: token } 
+        headers: { Authorization: token },
     });
 
     return res;
@@ -103,7 +104,7 @@ export const requestWorker = async (fromId, toId) => {
             fromId,
             toId,
         },
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
     return res;
 };
@@ -112,7 +113,7 @@ export const getUserRequest = async (fromId, toId) => {
     const res = await Axiosuser({
         method: "get",
         url: `/getRequestStatus?from=${fromId}&to=${toId}`,
-        headers: { Authorization: token } 
+        headers: { Authorization: token },
     });
     return res;
 };
@@ -121,44 +122,44 @@ export const getAllrequests = async (userid) => {
     const res = await Axiosuser({
         method: "get",
         url: `/getAllrequests?userid=${userid}`,
-        headers: { Authorization: token } 
+        headers: { Authorization: token },
     });
     return res;
 };
 
-export const acceptingRequest = async (Id,userid) => {
+export const acceptingRequest = async (Id, userid) => {
     console.log(Id, "iam here");
     const res = await Axiosuser({
         method: `post`,
         url: `/acceptRequest?id=${Id}&userid=${userid}`,
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
     return res;
 };
 
-export const cancelRequest = async (fromId,toId) => {
+export const cancelRequest = async (fromId, toId) => {
     const res = await Axiosuser({
-        method:'delete',
-        url:`/cancelRequest?fromid=${fromId}&toid=${toId}`,
-        headers: { Authorization: token }
+        method: "delete",
+        url: `/cancelRequest?fromid=${fromId}&toid=${toId}`,
+        headers: { Authorization: token },
     });
     return res;
 };
 
-export const rejectingRequest = async (fromId, userId) =>{
+export const rejectingRequest = async (fromId, userId) => {
     const res = await Axiosuser({
-        method:'delete',
-        url:`/rejectRequest?fromid=${fromId}&userid=${userId}`,
-        headers: { Authorization: token } 
-    })
+        method: "delete",
+        url: `/rejectRequest?fromid=${fromId}&userid=${userId}`,
+        headers: { Authorization: token },
+    });
 
-    return res
-}
+    return res;
+};
 export const checkServiceAdded = async (userid) => {
     const res = await Axiosuser({
         method: "get",
         url: `/checkServiceadded?userId=${userid}`,
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
     return res;
 };
@@ -167,13 +168,13 @@ export const checkSubscription = async (userid) => {
     const res = await Axiosuser({
         method: "get",
         url: `/checkSubscription?userId=${userid}`,
-        headers: { Authorization: token } 
+        headers: { Authorization: token },
     });
     return res;
 };
 
 export const CheckSubscriptionExpired = async (userid) => {
-    const res = await Axiosuser.get(`/checksubscriptionExpired?userId=${userid}`,{ headers: { Authorization: token } })
+    const res = await Axiosuser.get(`/checksubscriptionExpired?userId=${userid}`, { headers: { Authorization: token } });
     return res;
 };
 
@@ -181,7 +182,7 @@ export const myService = async (userid) => {
     const res = await Axiosuser({
         method: "get",
         url: `/myservice?userId=${userid}`,
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
     return res;
 };
@@ -192,7 +193,7 @@ export const Search = async (search, userid, distval) => {
     const res = await Axiosuser({
         method: "get",
         url: `/searchservice?title=${search}&userId=${userid}&ditsrict=${distval}`,
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
 
     return res;
@@ -215,62 +216,59 @@ export const requestStatus = async (userId) => {
     const res = await Axiosuser({
         method: `post`,
         url: `/getAcceptRequestStatus?id=${userId}`,
-        headers: { Authorization: token }
+        headers: { Authorization: token },
     });
     return res;
 };
-
 
 export const Appointment = async (worker, user, date, time, desc) => {
     const res = await Axiosuser({
         method: `post`,
         url: `/makeAppointment`,
-        data:{
+        data: {
             worker,
             user,
             date,
             time,
             desc,
         },
-        headers: { Authorization: token } 
-
-    })
+        headers: { Authorization: token },
+    });
     return res;
 };
 
-export const getAppointment = async (userId)=>{
+export const getAppointment = async (userId) => {
     const res = await Axiosuser({
-        method:`get`,
+        method: `get`,
         url: `/getAppointment?id=${userId}`,
-        headers: { Authorization: token } 
+        headers: { Authorization: token },
     });
-    return res
-}
+    return res;
+};
 
-export const updateAppointment = async (userId, button)=>{
+export const updateAppointment = async (userId, button) => {
     const res = await Axiosuser({
-        method:`patch`,
+        method: `patch`,
         url: `/makeAppointment?id=${userId}&button=${button}`,
-        headers: { Authorization: token } 
+        headers: { Authorization: token },
     });
-    return res
-}
+    return res;
+};
 
 export const getAppointmentStatus = async (userId) => {
     const res = await Axiosuser({
-        method:`get`,
+        method: `get`,
         url: `/getAppointmentStatus?id=${userId}`,
-        headers: { Authorization: token } 
-    })
-    return res
+        headers: { Authorization: token },
+    });
+    return res;
 };
 
 export const deleteMyservice = async (userId) => {
     const res = await Axiosuser({
-        method:`delete`,
+        method: `delete`,
         url: `/deleteMyservice?id=${userId}`,
-        headers: { Authorization: token } 
-    })
-    return res
+        headers: { Authorization: token },
+    });
+    return res;
 };
-
